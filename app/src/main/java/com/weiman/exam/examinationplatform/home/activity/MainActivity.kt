@@ -3,6 +3,7 @@ package com.weiman.exam.examinationplatform.home.activity
 import android.os.Bundle
 import com.weiman.exam.examinationplatform.R
 import com.weiman.exam.examinationplatform.base.BaseActivity
+import com.weiman.exam.examinationplatform.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : BaseActivity() {
@@ -13,6 +14,6 @@ class MainActivity : BaseActivity() {
          mChildView.tv_show.text="微迈科技"
     }
     override fun initView() {
-
+        setTitle("首页")
     }
 }
