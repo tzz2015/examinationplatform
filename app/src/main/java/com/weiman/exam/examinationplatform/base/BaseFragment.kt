@@ -2,17 +2,19 @@ package com.weiman.exam.examinationplatform.base
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.RelativeLayout
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.tbruyelle.rxpermissions.RxPermissions
 import com.weiman.exam.examinationplatform.R
-import com.weiman.exam.examinationplatform.utils.*
+import com.weiman.exam.examinationplatform.utils.AutoUtils
+import com.weiman.exam.examinationplatform.utils.CommonUtils
+import com.weiman.exam.examinationplatform.utils.TUtil
 import kotlinx.android.synthetic.main.activity_base.view.*
 import kotlinx.android.synthetic.main.common_back_title.view.*
 import rx.Subscription
@@ -23,98 +25,87 @@ import rx.subscriptions.CompositeSubscription
  * 邮箱：3494576680@qq.com
  * 描述 基类
  */
-abstract class BaseActivity<T:BasePresenter<*>> :FragmentActivity(){
+abstract class BaseFragment<T : BasePresenter<*>> : Fragment() {
 
-    lateinit var mBaseView:View
-    lateinit var mChildView:View
-    lateinit var mContext:Context
+    lateinit var mBaseView: View
+    lateinit var mChildView: View
+    lateinit var mContext: Context
     var mPresenter: T? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //隐藏标题栏
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        LogUtil.getInstance().e(localClassName)
-        mPresenter=TUtil.getT(this,0)
-        mPresenter?.mContext=this
+        mPresenter = TUtil.getT(this, 0)
+        mPresenter?.mContext = context
         initPresenter()
 
     }
 
-
-    override fun setContentView(layoutResID: Int) {
-        super.setContentView(layoutResID)
-        //基础view
-        mBaseView = layoutInflater.inflate(R.layout.activity_base, null,false)
-        mChildView=layoutInflater.inflate(layoutResID,null,false)
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mBaseView = inflater!!.inflate(R.layout.activity_base, container, false)
+        mChildView = inflater.inflate(setLayoutId(), null, false)
         //子view设置全屏
         val params = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        mChildView.rootView.layoutParams=params
+        mChildView.rootView.layoutParams = params
         mBaseView.container.addView(mChildView.rootView)
-        //添加到窗口
-        window.setContentView(mBaseView.rootView)
-        mContext=this
-        //设置沉浸状态栏颜色
-        StatusBarUtil.setColor(this,CommonUtils.getColor(this,R.color.colorTitle),0)
-        //根据设计稿设定 preview 切换至对应的尺寸
-        AutoUtils.setSize(this, false, 720, 1280)
+        mContext = context
+        hideIconBack()
         //自适应页面
-        AutoUtils.autoView(this)
+        AutoUtils.autoView(mBaseView.rootView)
         initView()
-        initListener()
-
+        return mBaseView.rootView
     }
 
-    /**
-     * 点击返回键默认关闭
-     */
-    private fun initListener() {
-        mBaseView.common_title.ll_lift_back.setOnClickListener { finish() }
-    }
+    abstract fun setLayoutId(): Int
+
 
     /**
      * 初始化布局
      */
     abstract fun initView()
+
     abstract fun initPresenter()
 
     /**
      * 隐藏标题栏
      */
-    fun hideTitleBar(){
-        mBaseView.common_title.common_title?.rl_title_bar?.visibility=GONE
+    fun hideTitleBar() {
+        mBaseView.common_title.common_title?.rl_title_bar?.visibility = GONE
     }
+
     /**
      * 隐藏返回箭头
      */
-    fun hideIconBack(){
-        mBaseView.common_title.common_title?.ll_lift_back?.visibility=GONE
+    fun hideIconBack() {
+        mBaseView.common_title.common_title?.ll_lift_back?.visibility = GONE
     }
 
     /**
      * 设置标题
      */
-    fun setTitle(title:String){
-        mBaseView.common_title.common_title?.tv_title?.text=title
+    fun setTitle(title: String) {
+        mBaseView.common_title.common_title?.tv_title?.text = title
     }
+
     /**
      * 显示toast
      */
-    fun showToast(title:String){
-        CommonUtils.showToast(mContext,title)
+    fun showToast(title: String) {
+        CommonUtils.showToast(mContext, title)
     }
+
     /**
      * 设置右侧文字
      */
-    fun setRightTitle(title: String,listener: View.OnClickListener){
-        mBaseView.common_title.tv_right_text.visibility= VISIBLE
-        mBaseView.common_title.tv_right_text.text=title
+    fun setRightTitle(title: String, listener: View.OnClickListener) {
+        mBaseView.common_title.tv_right_text.visibility = VISIBLE
+        mBaseView.common_title.tv_right_text.text = title
         mBaseView.common_title.tv_right_text.setOnClickListener(listener)
     }
+
     /**
      * 设置右侧图片
      */
-    fun setRightImg(img: Int,listener: View.OnClickListener){
-        mBaseView.common_title.iv_right_img.visibility= VISIBLE
+    fun setRightImg(img: Int, listener: View.OnClickListener) {
+        mBaseView.common_title.iv_right_img.visibility = VISIBLE
         mBaseView.common_title.iv_right_img.setOnClickListener(listener)
         mBaseView.common_title.iv_right_img.setBackgroundResource(img)
     }
@@ -124,9 +115,10 @@ abstract class BaseActivity<T:BasePresenter<*>> :FragmentActivity(){
      * @param str
      */
     private var mProgressDialog: KProgressHUD? = null
+
     fun showInfoProgressDialog(vararg str: String) {
         if (mProgressDialog == null) {
-            mProgressDialog = KProgressHUD(this)
+            mProgressDialog = KProgressHUD(context)
             mProgressDialog!!.setCancellable(true)
         }
         if (str.isEmpty()) {
@@ -184,7 +176,7 @@ abstract class BaseActivity<T:BasePresenter<*>> :FragmentActivity(){
 
     fun requestPermission(permissions: Array<String>) {
         if (rxPermissions == null) {
-            rxPermissions = RxPermissions(this)
+            rxPermissions = RxPermissions(activity)
         }
         val subscribe = rxPermissions!!
                 .request(*permissions)
@@ -196,7 +188,7 @@ abstract class BaseActivity<T:BasePresenter<*>> :FragmentActivity(){
      * 请求结果
      * @param aBoolean
      */
-     fun requestPermissionCallBack(aBoolean: Boolean?) {}
+    fun requestPermissionCallBack(aBoolean: Boolean?) {}
 
     override fun onDestroy() {
         super.onDestroy()

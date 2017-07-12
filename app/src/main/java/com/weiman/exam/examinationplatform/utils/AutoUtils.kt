@@ -56,7 +56,7 @@ object AutoUtils {
     /**
      * 自适应view
      */
-    private fun autoView(view: View?) {
+     fun autoView(view: View?) {
         if (view == null || displayWidth < 1 || displayHeight < 1) return
         autoTextSize(view)
         autoSize(view)
