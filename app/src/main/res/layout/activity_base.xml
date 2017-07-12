@@ -9,6 +9,7 @@
         android:orientation="vertical">
 
         <include
+            android:visibility="gone"
             android:id="@+id/common_title"
             layout="@layout/common_back_title" />
 

@@ -3,6 +3,7 @@ package com.weiman.exam.examinationplatform.utils
 import android.content.Context
 import android.content.res.Resources
 import android.view.Gravity
+import android.widget.TextView
 import android.widget.Toast
 import com.kaopiz.kprogresshud.KProgressHUD
 import rx.Subscription
@@ -128,6 +129,21 @@ object CommonUtils {
         if (this.mCompositeSubscription != null && mCompositeSubscription!!.hasSubscriptions()) {
             this.mCompositeSubscription!!.unsubscribe()
             this.mCompositeSubscription = null
+        }
+    }
+
+    /**
+     * 设置文本
+
+     * @param value
+     * *
+     * @return
+     */
+    fun setTextValue(textView: TextView, value: String) {
+        if (isNotEmpty(value))
+            textView.text = value
+        else {
+                textView.text = ""
         }
     }
 

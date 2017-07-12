@@ -17,7 +17,7 @@ object AutoUtils {
     private var displayWidth: Int = 0
     private var displayHeight: Int = 0
 
-    private var designWidth: Int = 0
+     var designWidth: Int = 0
     private var designHeight: Int = 0
 
     private var textPixelsRate: Double = 0.toDouble()

@@ -67,8 +67,8 @@ abstract class BaseFragment<T : BasePresenter<*>> : Fragment() {
     /**
      * 隐藏标题栏
      */
-    fun hideTitleBar() {
-        mBaseView.common_title.common_title?.rl_title_bar?.visibility = GONE
+    fun showTitleBar() {
+        mBaseView.common_title.common_title?.visibility = VISIBLE
     }
 
     /**

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 底部导航属性-->
+    <declare-styleable name="NavigationView">
+
+        <attr name="drawable_src" format="integer" /> <!--图片选择器-->
+        <attr name="dse_name" format="string" /> <!-- 描述-->
+        <attr name="is_select" format="boolean"/> <!--是否选中-->
+
+    </declare-styleable>
+    <!-- 设置横条-->
+    <declare-styleable name="SettingActionView">
+
+        <attr name="icon_src" format="integer" /> <!--左侧图片-->
+        <attr name="title_name" format="string" /> <!-- 描述-->
+        <attr name="is_show_arrow" format="boolean"/> <!--是否显示箭头-->
+        <attr name="is_show_line" format="boolean"/> <!--是否显示底部线条-->
+
+    </declare-styleable>
+</resources>

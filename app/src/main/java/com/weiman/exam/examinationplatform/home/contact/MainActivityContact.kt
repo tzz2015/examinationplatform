@@ -8,7 +8,7 @@ import com.weiman.exam.examinationplatform.base.BaseView
  * 邮箱：3494576680@qq.com
  * 描述
  */
-interface MianActivityContact {
+interface MainActivityContact {
     interface View :BaseView{
 
     }
