@@ -18,7 +18,7 @@ class MainActivity:BaseActivity<MainHomeActivityPresenter>()  {
 
     }
     override fun initView() {
-        setTitle("首页")
+        hideTitleBar()
     }
 
 }

@@ -81,7 +81,7 @@ abstract class BaseActivity<T:BasePresenter<*>> :FragmentActivity(){
      * 隐藏标题栏
      */
     fun hideTitleBar(){
-        mBaseView.common_title.common_title?.rl_title_bar?.visibility=GONE
+        mBaseView.common_title.common_title?.visibility=GONE
     }
     /**
      * 隐藏返回箭头
