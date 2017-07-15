@@ -33,7 +33,7 @@ abstract class BaseActivity<T:BasePresenter<*>> :FragmentActivity(){
         super.onCreate(savedInstanceState)
         //隐藏标题栏
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        LogUtil.getInstance().e(localClassName)
+        LogUtil.getInstance().e(javaClass.simpleName)
         mPresenter=TUtil.getT(this,0)
         mPresenter?.mContext=this
         initPresenter()
@@ -57,9 +57,10 @@ abstract class BaseActivity<T:BasePresenter<*>> :FragmentActivity(){
         StatusBarUtil.setColor(this,CommonUtils.getColor(this,R.color.colorTitle),0)
         //根据设计稿设定 preview 切换至对应的尺寸
         AutoUtils.setSize(this, false, 720, 1280)
+        initView()
         //自适应页面
         AutoUtils.autoView(this)
-        initView()
+
         initListener()
 
     }

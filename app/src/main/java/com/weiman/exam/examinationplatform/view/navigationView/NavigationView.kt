@@ -70,7 +70,6 @@ class NavigationView : LinearLayout {
             layoutParams.width = AutoUtils.designWidth/ map.size
             childAt.layoutParams = layoutParams
         }
-        AutoUtils.autoView(this)
         invalidate()
     }
 

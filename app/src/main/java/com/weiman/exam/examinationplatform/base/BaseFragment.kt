@@ -12,8 +12,11 @@ import android.widget.RelativeLayout
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.tbruyelle.rxpermissions.RxPermissions
 import com.weiman.exam.examinationplatform.R
+import com.weiman.exam.examinationplatform.base.http.HttpTask
+import com.weiman.exam.examinationplatform.base.http.HttpUtils
 import com.weiman.exam.examinationplatform.utils.AutoUtils
 import com.weiman.exam.examinationplatform.utils.CommonUtils
+import com.weiman.exam.examinationplatform.utils.LogUtil
 import com.weiman.exam.examinationplatform.utils.TUtil
 import kotlinx.android.synthetic.main.activity_base.view.*
 import kotlinx.android.synthetic.main.common_back_title.view.*
@@ -30,12 +33,14 @@ abstract class BaseFragment<T : BasePresenter<*>> : Fragment() {
     lateinit var mBaseView: View
     lateinit var mChildView: View
     lateinit var mContext: Context
+    lateinit var mHttpTask:HttpTask
     var mPresenter: T? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mPresenter = TUtil.getT(this, 0)
         mPresenter?.mContext = context
         initPresenter()
+        LogUtil.getInstance().e(javaClass.simpleName)
 
     }
 
@@ -50,6 +55,7 @@ abstract class BaseFragment<T : BasePresenter<*>> : Fragment() {
         hideIconBack()
         //自适应页面
         AutoUtils.autoView(mBaseView.rootView)
+        mHttpTask=HttpUtils.getInstance().createRequest(HttpTask::class.java)
         initView()
         return mBaseView.rootView
     }

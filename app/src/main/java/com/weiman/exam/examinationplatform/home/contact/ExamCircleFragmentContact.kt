@@ -8,13 +8,11 @@ import com.weiman.exam.examinationplatform.base.BaseView
  * 邮箱：3494576680@qq.com
  * 描述
  */
-interface MainActivityContact {
-    interface View : BaseView {
-        fun initFragment()
-        fun changeFragment(position: Int)
-    }
+interface ExamCircleFragmentContact {
+    interface View :BaseView{
 
-    abstract class Presenter : BasePresenter<View>() {
+    }
+    abstract class Presenter :BasePresenter<View>(){
 
     }
 }

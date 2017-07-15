@@ -7,7 +7,9 @@ import android.util.Log
  * 邮箱：3494576680@qq.com
  * 描述
  */
-class LogUtil private constructor() {
+class LogUtil  private constructor(){
+
+
     private val TAG = "TCircle"
 
     //public static int logLevel = Log.ASSERT;

@@ -108,11 +108,11 @@ class NavigationItemView : RelativeLayout {
             tv_red_dot!!.visibility = View.VISIBLE
             if (num > 10) {
                 if (num < 100)
-                    tv_red_dot!!.setPadding(3, 3, 3, 3)
+                    tv_red_dot!!.setPadding(6, 6, 6, 6)
                 else
-                    tv_red_dot!!.setPadding(3, 10, 3, 10)
+                    tv_red_dot!!.setPadding(5, 8, 5, 8)
             } else
-                tv_red_dot!!.setPadding(10, 3, 10, 3)
+                tv_red_dot!!.setPadding(10, 6, 10, 6)
 
         } else {
             tv_red_dot!!.visibility = View.GONE
