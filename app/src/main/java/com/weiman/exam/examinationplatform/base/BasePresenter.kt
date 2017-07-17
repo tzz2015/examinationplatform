@@ -2,6 +2,7 @@ package com.weiman.exam.examinationplatform.base
 
 
 import android.content.Context
+import com.weiman.exam.examinationplatform.base.http.HttpTask
 
 
 /**
@@ -11,7 +12,8 @@ import android.content.Context
  */
 
 abstract class BasePresenter<T> {
-    var mContext: Context? = null
+    lateinit var mContext: Context
+    lateinit var mHttpTask: HttpTask
     var mView: T? = null
 
 

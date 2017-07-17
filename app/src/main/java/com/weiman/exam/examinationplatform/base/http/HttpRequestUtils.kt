@@ -30,7 +30,7 @@ class HttpRequestUtils private constructor() : HttpBuilder {
         return this
     }
 
-    override fun setContext(context: Context): HttpBuilder {
+    override fun setContext(context: Context?): HttpBuilder {
         this.context = context
         return this
     }

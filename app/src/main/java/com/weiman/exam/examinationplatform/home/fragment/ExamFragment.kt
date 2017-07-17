@@ -2,9 +2,9 @@ package com.weiman.exam.examinationplatform.home.fragment
 
 import com.weiman.exam.examinationplatform.R
 import com.weiman.exam.examinationplatform.base.BaseFragment
+import com.weiman.exam.examinationplatform.databinding.LayoutTestBinding
 import com.weiman.exam.examinationplatform.home.contact.ExamFragmentContact
 import com.weiman.exam.examinationplatform.home.presenter.ExamFragmentPresenter
-import kotlinx.android.synthetic.main.layout_test.view.*
 
 /**
  * 创建 by 刘宇飞 on 2017/7/13.
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.layout_test.view.*
  * 微迈科技有限责任公司
  * 描述
  */
-class ExamFragment : BaseFragment<ExamFragmentPresenter>(), ExamFragmentContact.View {
+class ExamFragment : BaseFragment<ExamFragmentPresenter,LayoutTestBinding>(), ExamFragmentContact.View {
     override fun setLayoutId(): Int {
         return R.layout.layout_test
     }
@@ -20,7 +20,7 @@ class ExamFragment : BaseFragment<ExamFragmentPresenter>(), ExamFragmentContact.
     override fun initView() {
         showTitleBar()
         setTitle("考试")
-        mChildView.tv_show.text="考试"
+         mBindingView.tvShow.text="考试"
     }
 
     override fun initPresenter() {

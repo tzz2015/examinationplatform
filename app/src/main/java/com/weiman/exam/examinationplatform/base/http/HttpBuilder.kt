@@ -13,7 +13,7 @@ import rx.Subscription
 interface HttpBuilder {
     abstract fun setRequestId(requestId: Int): HttpBuilder
 
-    abstract fun setContext(context: Context): HttpBuilder
+    abstract fun setContext(context: Context?): HttpBuilder
 
     abstract fun setObservable(observable: Observable<*>): HttpBuilder
 

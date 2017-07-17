@@ -14,6 +14,8 @@ import android.widget.RelativeLayout
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.tbruyelle.rxpermissions.RxPermissions
 import com.weiman.exam.examinationplatform.R
+import com.weiman.exam.examinationplatform.base.http.HttpTask
+import com.weiman.exam.examinationplatform.base.http.HttpUtils
 import com.weiman.exam.examinationplatform.databinding.ActivityBaseBinding
 import com.weiman.exam.examinationplatform.utils.*
 import kotlinx.android.synthetic.main.activity_base.*
@@ -30,6 +32,7 @@ abstract class BaseActivity<T : BasePresenter<*>, SV : ViewDataBinding> : Fragme
     lateinit var mBaseBinding: ActivityBaseBinding
     lateinit var mBindingView: SV
     lateinit var mContext: Context
+    lateinit var mHttpTask:HttpTask
     var mPresenter: T? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,8 @@ abstract class BaseActivity<T : BasePresenter<*>, SV : ViewDataBinding> : Fragme
         LogUtil.getInstance().e(javaClass.simpleName)
         mPresenter = TUtil.getT(this, 0)
         mPresenter?.mContext = this
+        mHttpTask= HttpUtils.getInstance().createRequest(HttpTask::class.java)
+        mPresenter?.mHttpTask=mHttpTask
         initPresenter()
 
     }

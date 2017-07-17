@@ -10,9 +10,9 @@ import com.weiman.exam.examinationplatform.base.BaseView
  */
 interface HomeFragmentContact {
     interface View :BaseView{
-
+      fun setBackDate(phone:String)
     }
     abstract class Presenter :BasePresenter<View>(){
-
+        abstract fun getData()
     }
 }

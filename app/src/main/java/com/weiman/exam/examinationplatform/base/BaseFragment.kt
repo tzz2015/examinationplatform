@@ -1,6 +1,8 @@
 package com.weiman.exam.examinationplatform.base
 
 import android.content.Context
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -14,11 +16,12 @@ import com.tbruyelle.rxpermissions.RxPermissions
 import com.weiman.exam.examinationplatform.R
 import com.weiman.exam.examinationplatform.base.http.HttpTask
 import com.weiman.exam.examinationplatform.base.http.HttpUtils
+import com.weiman.exam.examinationplatform.databinding.ActivityBaseBinding
 import com.weiman.exam.examinationplatform.utils.AutoUtils
 import com.weiman.exam.examinationplatform.utils.CommonUtils
 import com.weiman.exam.examinationplatform.utils.LogUtil
 import com.weiman.exam.examinationplatform.utils.TUtil
-import kotlinx.android.synthetic.main.activity_base.view.*
+import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.common_back_title.view.*
 import rx.Subscription
 import rx.subscriptions.CompositeSubscription
@@ -28,36 +31,38 @@ import rx.subscriptions.CompositeSubscription
  * 邮箱：3494576680@qq.com
  * 描述 基类
  */
-abstract class BaseFragment<T : BasePresenter<*>> : Fragment() {
+abstract class BaseFragment<T : BasePresenter<*>, SV : ViewDataBinding> : Fragment() {
 
-    lateinit var mBaseView: View
-    lateinit var mChildView: View
+    lateinit var mBaseBinding: ActivityBaseBinding
+    lateinit var mBindingView: SV
     lateinit var mContext: Context
-    lateinit var mHttpTask:HttpTask
+    lateinit var mHttpTask: HttpTask
     var mPresenter: T? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mPresenter = TUtil.getT(this, 0)
         mPresenter?.mContext = context
+        mHttpTask = HttpUtils.getInstance().createRequest(HttpTask::class.java)
+        mPresenter?.mHttpTask = mHttpTask
         initPresenter()
         LogUtil.getInstance().e(javaClass.simpleName)
 
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mBaseView = inflater!!.inflate(R.layout.activity_base, container, false)
-        mChildView = inflater.inflate(setLayoutId(), null, false)
+        mBaseBinding = DataBindingUtil.inflate<ActivityBaseBinding>(inflater, R.layout.activity_base, container, false)
+        mBindingView = DataBindingUtil.inflate<SV>(inflater, setLayoutId(), null, false)
         //子view设置全屏
         val params = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        mChildView.rootView.layoutParams = params
-        mBaseView.container.addView(mChildView.rootView)
+        mBindingView.root.layoutParams = params
+        mBaseBinding.container.addView(mBindingView.root)
         mContext = context
         hideIconBack()
         //自适应页面
-        AutoUtils.autoView(mBaseView.rootView)
-        mHttpTask=HttpUtils.getInstance().createRequest(HttpTask::class.java)
+        AutoUtils.autoView(mBaseBinding.root)
+        common_title?.visibility = GONE
         initView()
-        return mBaseView.rootView
+        return mBaseBinding.root
     }
 
     abstract fun setLayoutId(): Int
@@ -74,21 +79,21 @@ abstract class BaseFragment<T : BasePresenter<*>> : Fragment() {
      * 隐藏标题栏
      */
     fun showTitleBar() {
-        mBaseView.common_title.common_title?.visibility = VISIBLE
+        common_title?.visibility = VISIBLE
     }
 
     /**
      * 隐藏返回箭头
      */
     fun hideIconBack() {
-        mBaseView.common_title.common_title?.ll_lift_back?.visibility = GONE
+        mBaseBinding.commonTitle.ll_lift_back.visibility = GONE
     }
 
     /**
      * 设置标题
      */
     fun setTitle(title: String) {
-        mBaseView.common_title.common_title?.tv_title?.text = title
+        mBaseBinding.commonTitle.tv_title.text = title
     }
 
     /**
@@ -102,18 +107,18 @@ abstract class BaseFragment<T : BasePresenter<*>> : Fragment() {
      * 设置右侧文字
      */
     fun setRightTitle(title: String, listener: View.OnClickListener) {
-        mBaseView.common_title.tv_right_text.visibility = VISIBLE
-        mBaseView.common_title.tv_right_text.text = title
-        mBaseView.common_title.tv_right_text.setOnClickListener(listener)
+        mBaseBinding.commonTitle.tv_right_text.visibility = VISIBLE
+        mBaseBinding.commonTitle. tv_right_text.text = title
+        mBaseBinding.commonTitle. tv_right_text.setOnClickListener(listener)
     }
 
     /**
      * 设置右侧图片
      */
     fun setRightImg(img: Int, listener: View.OnClickListener) {
-        mBaseView.common_title.iv_right_img.visibility = VISIBLE
-        mBaseView.common_title.iv_right_img.setOnClickListener(listener)
-        mBaseView.common_title.iv_right_img.setBackgroundResource(img)
+        mBaseBinding.commonTitle. iv_right_img.visibility = VISIBLE
+        mBaseBinding.commonTitle. iv_right_img.setOnClickListener(listener)
+        mBaseBinding.commonTitle. iv_right_img.setBackgroundResource(img)
     }
 
     /**
