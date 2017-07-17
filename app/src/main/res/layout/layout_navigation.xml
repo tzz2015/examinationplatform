@@ -5,6 +5,6 @@
     android:id="@+id/ll_root"
     android:gravity="center_vertical"
     android:background="@color/colorWhite"
-    android:layout_height="100px">
+    android:layout_height="80px">
 
 </LinearLayout>
