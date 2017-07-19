@@ -2,7 +2,7 @@ package com.weiman.exam.examinationplatform.home.fragment
 
 import com.weiman.exam.examinationplatform.R
 import com.weiman.exam.examinationplatform.base.BaseFragment
-import com.weiman.exam.examinationplatform.databinding.LayoutTestBinding
+import com.weiman.exam.examinationplatform.databinding.XRecyclerviewBinding
 import com.weiman.exam.examinationplatform.home.contact.ExamFragmentContact
 import com.weiman.exam.examinationplatform.home.presenter.ExamFragmentPresenter
 
@@ -12,15 +12,15 @@ import com.weiman.exam.examinationplatform.home.presenter.ExamFragmentPresenter
  * 微迈科技有限责任公司
  * 描述
  */
-class ExamFragment : BaseFragment<ExamFragmentPresenter,LayoutTestBinding>(), ExamFragmentContact.View {
+class ExamFragment : BaseFragment<ExamFragmentPresenter,XRecyclerviewBinding>(), ExamFragmentContact.View {
     override fun setLayoutId(): Int {
-        return R.layout.layout_test
+        return R.layout.x_recyclerview
     }
 
     override fun initView() {
         showTitleBar()
         setTitle("考试")
-         mBindingView.tvShow.text="考试"
+        mPresenter?.intRecyclerView(mBindingView.xRecyclerView)
     }
 
     override fun initPresenter() {

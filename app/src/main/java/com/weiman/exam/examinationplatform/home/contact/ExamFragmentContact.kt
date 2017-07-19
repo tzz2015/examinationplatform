@@ -1,5 +1,6 @@
 package com.weiman.exam.examinationplatform.home.contact
 
+import com.example.xrecyclerview.XRecyclerView
 import com.weiman.exam.examinationplatform.base.BasePresenter
 import com.weiman.exam.examinationplatform.base.BaseView
 
@@ -13,6 +14,7 @@ interface ExamFragmentContact {
 
     }
     abstract class Presenter :BasePresenter<View>(){
-
+        abstract fun intRecyclerView(recyclerView:XRecyclerView)
+        abstract fun initData(b: Boolean)
     }
 }

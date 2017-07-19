@@ -25,8 +25,6 @@ class MainActivity : BaseActivity<MainHomeActivityPresenter, ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
     }
 
     override fun initView() {
