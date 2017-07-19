@@ -8,7 +8,6 @@ import com.weiman.exam.examinationplatform.R
 import com.weiman.exam.examinationplatform.utils.AutoUtils
 
 /**
- * 杭州融科网络
  * 刘宇飞创建 on 2017/6/5.
  * 描述：
  */

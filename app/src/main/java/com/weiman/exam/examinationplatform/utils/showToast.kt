@@ -5,7 +5,6 @@ import android.view.Gravity
 import android.widget.Toast
 
 /**
- * 杭州融科网络
  *  刘宇飞创建 on 2017/5/25.
  * 描述：显示在中间的toast
  */
