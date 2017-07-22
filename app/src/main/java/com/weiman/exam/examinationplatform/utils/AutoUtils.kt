@@ -115,7 +115,7 @@ object AutoUtils {
     /**
      * 自适应控件大小
      */
-    private fun autoSize(view: View) {
+    public fun autoSize(view: View) {
         val lp = view.layoutParams ?: return
 
         if (lp.width > 0) {

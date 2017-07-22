@@ -8,15 +8,15 @@ import com.weiman.exam.examinationplatform.base.BaseView
  * 邮箱：3494576680@qq.com
  * 描述
  */
-interface UserInfoActivityContact {
+interface LoginActivityContact {
     interface View : BaseView {
-        /**
-         * 是否退出
-         */
-        fun showLogoutDialog()
+
     }
 
     abstract class Presenter : BasePresenter<View>() {
-
+        /**
+         * 登录
+         */
+        abstract fun doLogin(account: String, psw: String)
     }
 }

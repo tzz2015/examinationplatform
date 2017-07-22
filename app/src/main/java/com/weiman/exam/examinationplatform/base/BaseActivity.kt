@@ -43,7 +43,6 @@ abstract class BaseActivity<T : BasePresenter<*>, SV : ViewDataBinding> : Fragme
         mPresenter?.mContext = this
         mHttpTask= HttpUtils.getInstance().createRequest(HttpTask::class.java)
         mPresenter?.mHttpTask=mHttpTask
-        initPresenter()
 
     }
 
@@ -68,12 +67,13 @@ abstract class BaseActivity<T : BasePresenter<*>, SV : ViewDataBinding> : Fragme
         //自适应页面
         AutoUtils.autoView(this)
         initView()
+        initListener()
     }
 
     /**
      * 点击返回键默认关闭
      */
-    private fun initListener() {
+    open   fun initListener() {
         mBaseBinding.commonTitle.ll_lift_back.setOnClickListener { finish() }
     }
 

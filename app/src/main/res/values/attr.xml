@@ -6,7 +6,7 @@
 
         <attr name="drawable_src" format="integer" /> <!--图片选择器-->
         <attr name="dse_name" format="string" /> <!-- 描述-->
-        <attr name="is_select" format="boolean"/> <!--是否选中-->
+        <attr name="is_select" format="boolean" /> <!--是否选中-->
 
     </declare-styleable>
     <!-- 设置横条-->
@@ -14,8 +14,46 @@
 
         <attr name="icon_src" format="integer" /> <!--左侧图片-->
         <attr name="title_name" format="string" /> <!-- 描述-->
-        <attr name="is_show_arrow" format="boolean"/> <!--是否显示箭头-->
-        <attr name="is_show_line" format="boolean"/> <!--是否显示底部线条-->
+        <attr name="is_show_arrow" format="boolean" /> <!--是否显示箭头-->
+        <attr name="is_show_line" format="boolean" /> <!--是否显示底部线条-->
 
+    </declare-styleable>
+
+    <!-- 设置属性-->
+    <declare-styleable name="SettingView">
+
+        <attr name="setting_title" format="string" /><!--标题-->
+        <attr name="setting_left_value" format="string" /><!--左侧值-->
+        <attr name="setting_value" format="string" /><!--右侧值-->
+        <attr name="arrow_is_show" format="boolean" /><!--是否显示箭头-->
+        <attr name="is_need_line" format="boolean" /> <!--是否底部线条-->
+    </declare-styleable>
+    <!-- 带输入框 设置属性-->
+    <declare-styleable name="InputSettingView">
+        <attr name="input_title" format="string" /><!--标题-->
+        <attr name="hide_value" format="string" /><!--左侧值-->
+        <attr name="is_show_start" format="boolean" /><!--是否显示*-->
+        <attr name="need_line" format="boolean" /> <!--是否底部线条-->
+        <attr name="on_right" format="boolean" /> <!--是否在右侧显示-->
+    </declare-styleable>
+    <!-- 带checkbok 设置属性-->
+    <declare-styleable name="CheckSettingView">
+        <attr name="check_title" format="string" /><!--标题-->
+        <attr name="is_check" format="boolean" /> <!--是否被选中-->
+        <attr name="need_bottom_line" format="boolean" /> <!--是否底部线条-->
+    </declare-styleable>
+
+
+    <!-- 评分栏属性-->
+    <declare-styleable name="StartBar">
+        <attr name="is_need_score" format="boolean" /> <!--是否需要显示分数-->
+        <attr name="is_need_touch" format="boolean" /> <!--触摸改变评分-->
+        <attr name="bar_text_color" format="color" /> <!--文本颜色-->
+        <attr name="star_height" format="integer" /><!--星星高度-->
+    </declare-styleable>
+    <!-- FlowLayout属性-->
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontal_spacing" format="integer" /><!--水平宽度-->
+        <attr name="vertical_spacing" format="integer" /><!--上下宽度-->
     </declare-styleable>
 </resources>

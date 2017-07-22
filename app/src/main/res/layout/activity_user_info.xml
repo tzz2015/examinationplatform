@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="view"
+            type="android.view.View" />
+        <variable
+            name="model"
+            type="com.weiman.exam.examinationplatform.account.bean.UserInfoBean" />
+    </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +15,69 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160px"
+            android:layout_marginBottom="20px"
+            android:layout_marginTop="20px"
+            android:background="@color/colorWhite"
+            android:padding="27px">
+
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50px"
+                app:cUrl="@{model.getUserImg()}" />
+
+            <TextView
+                style="@style/TextView283"
+                android:layout_centerVertical="true"
+                android:text="头像" />
+
+            <ImageView
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/rigth_arrow" />
+        </RelativeLayout>
+
+        <com.weiman.exam.examinationplatform.view.SettingView
+            android:id="@+id/sv_account"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            app:arrow_is_show="false"
+            app:setting_title="账号" />
+
+        <com.weiman.exam.examinationplatform.view.SettingView
+          android:id="@+id/sv_name"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginBottom="20px"
+            app:is_need_line="false"
+            app:setting_title="昵称" />
+
+        <com.weiman.exam.examinationplatform.view.SettingView
+          android:id="@+id/sv_change_psw"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            app:is_need_line="false"
+            app:setting_title="修改密码" />
+
+        <Button
+            android:id="@+id/bt_logout"
+            android:textSize="30px"
+            android:textColor="@color/colorWhite"
+            android:text="注销登录"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginLeft="27px"
+            android:layout_marginRight="27px"
+            android:layout_marginTop="50px"
+            android:background="@drawable/btn_red_press" />
     </LinearLayout>
 </layout>
 

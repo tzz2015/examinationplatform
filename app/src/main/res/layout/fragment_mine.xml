@@ -21,13 +21,13 @@
 
             <TextView
                 android:id="@+id/tv_no_login"
-                style="@style/TextView289"
+                style="@style/TextView309"
                 android:layout_centerHorizontal="true"
                 android:text="您还没有登录" />
             <Button
                 android:textColor="@color/color606666"
                 android:text="注册"
-                android:textSize="28px"
+                android:textSize="30px"
                 android:id="@+id/bt_register"
                 android:layout_marginTop="30px"
                 android:layout_below="@+id/tv_no_login"
@@ -37,7 +37,7 @@
             <Button
                 android:textColor="@color/colorWhite"
                 android:text="登录"
-                android:textSize="28px"
+                android:textSize="30px"
                 android:layout_alignParentRight="true"
                 android:id="@+id/bt_login"
                 android:layout_marginTop="30px"
@@ -65,7 +65,7 @@
                 android:layout_marginLeft="27px"
                 android:layout_toRightOf="@+id/iv_head"
                 android:text="@{model.getUserName()}"
-               style="@style/TextView283"/>
+               style="@style/TextView303"/>
             <TextView
                 android:layout_marginTop="10px"
                 android:layout_below="@+id/tv_user_name"
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="27px"
                 android:layout_toRightOf="@+id/iv_head"
                 android:text="@{model.getUserEmil()}"
-                style="@style/TextView259"/>
+                style="@style/TextView289"/>
             <ImageView
                 android:src="@mipmap/rigth_arrow"
                 android:layout_centerVertical="true"

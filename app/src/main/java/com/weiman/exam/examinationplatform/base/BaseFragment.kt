@@ -62,7 +62,15 @@ abstract class BaseFragment<T : BasePresenter<*>, SV : ViewDataBinding> : Fragme
         AutoUtils.autoView(mBaseBinding.root)
         common_title?.visibility = GONE
         initView()
+        initListener()
         return mBaseBinding.root
+    }
+
+    /**
+     * 监听
+     */
+    open fun initListener() {
+
     }
 
     abstract fun setLayoutId(): Int
@@ -108,17 +116,17 @@ abstract class BaseFragment<T : BasePresenter<*>, SV : ViewDataBinding> : Fragme
      */
     fun setRightTitle(title: String, listener: View.OnClickListener) {
         mBaseBinding.commonTitle.tv_right_text.visibility = VISIBLE
-        mBaseBinding.commonTitle. tv_right_text.text = title
-        mBaseBinding.commonTitle. tv_right_text.setOnClickListener(listener)
+        mBaseBinding.commonTitle.tv_right_text.text = title
+        mBaseBinding.commonTitle.tv_right_text.setOnClickListener(listener)
     }
 
     /**
      * 设置右侧图片
      */
     fun setRightImg(img: Int, listener: View.OnClickListener) {
-        mBaseBinding.commonTitle. iv_right_img.visibility = VISIBLE
-        mBaseBinding.commonTitle. iv_right_img.setOnClickListener(listener)
-        mBaseBinding.commonTitle. iv_right_img.setBackgroundResource(img)
+        mBaseBinding.commonTitle.iv_right_img.visibility = VISIBLE
+        mBaseBinding.commonTitle.iv_right_img.setOnClickListener(listener)
+        mBaseBinding.commonTitle.iv_right_img.setBackgroundResource(img)
     }
 
     /**

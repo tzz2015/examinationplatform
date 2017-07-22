@@ -21,10 +21,12 @@
             </intent-filter>
         </activity>
         <!-- 用户信息 -->
-        <activity android:name=".mine.activity.UserInfoActivity"
+        <activity
+            android:name=".mine.activity.UserInfoActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="nosensor"
-            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
+        <activity android:name=".account.activity.LoginActivity"></activity>
     </application>
 
 </manifest>

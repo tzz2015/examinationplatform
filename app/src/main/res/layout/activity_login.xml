@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.weiman.exam.examinationplatform.account.activity.LoginActivity">
+
+        <LinearLayout
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginTop="20px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="27px"
+            android:paddingRight="27px">
+
+            <TextView
+                style="@style/TextView303"
+                android:text="账号" />
+
+            <EditText
+                android:id="@+id/et_account"
+                android:layout_width="match_parent"
+                android:layout_height="60px"
+                android:layout_marginLeft="27px"
+                android:background="@null"
+                android:hint="请输入手机号码或者邮箱"
+                android:textColor="@color/color333333"
+                android:textColorHint="@color/color999999"
+                android:textSize="30px" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_line_inner" />
+
+        <LinearLayout
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="27px"
+            android:paddingRight="27px">
+
+            <TextView
+                style="@style/TextView303"
+                android:text="密码" />
+
+            <EditText
+                android:id="@+id/et_psw"
+                android:layout_width="match_parent"
+                android:layout_height="60px"
+                android:layout_marginLeft="27px"
+                android:background="@null"
+                android:hint="请输入密码(6-20个字符)"
+                android:textColor="@color/color333333"
+                android:textColorHint="@color/color999999"
+                android:textSize="30px" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/bt_login"
+            android:textColor="@color/colorWhite"
+            android:textSize="30px"
+            android:text="登录"
+            android:layout_marginRight="27px"
+            android:layout_marginLeft="27px"
+            android:layout_marginTop="50px"
+            android:background="@drawable/btn_blue_press"
+            android:layout_width="match_parent"
+            android:layout_height="80px" />
+
+        <RelativeLayout
+            android:layout_marginTop="20px"
+            android:padding="27px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_regist"
+                android:textSize="25px"
+                android:text="注册新用户"
+                android:textColor="@color/public_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_forget"
+                android:textSize="25px"
+                android:layout_alignParentRight="true"
+                android:text="忘记密码"
+                android:textColor="@color/public_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
+

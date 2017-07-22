@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="75px"
+    android:layout_marginRight="75px"
+    android:background="@drawable/white_big_corner"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:gravity="center"
+        android:text="提示"
+        android:textColor="@color/color333333"
+        android:textSize="40px" />
+
+    <TextView
+        android:gravity="center"
+        android:lineSpacingExtra="10px"
+        android:textSize="35px"
+        android:textColor="@color/color666666"
+        android:paddingLeft="27px"
+        android:paddingRight="27px"
+        android:id="@+id/tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px"
+        android:padding="27px">
+
+        <Button
+            android:id="@+id/tv_bt_cancel"
+            android:layout_width="0dp"
+            android:layout_height="90px"
+            android:layout_weight="1"
+            android:background="@drawable/grey_smal_side_corner"
+            android:text="取消"
+            android:textColor="@color/color666666"
+            android:textSize="35px" />
+
+        <Button
+            android:id="@+id/bt_submit"
+            android:layout_width="0dp"
+            android:layout_height="90px"
+            android:layout_marginLeft="35px"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_press"
+            android:text="确定"
+            android:textColor="@color/colorWhite"
+            android:textSize="35px" />
+    </LinearLayout>
+</LinearLayout>
+
+

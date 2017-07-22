@@ -1,5 +1,7 @@
 package com.weiman.exam.examinationplatform.utils
 
+import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.content.Intent
@@ -12,6 +14,7 @@ import com.kaopiz.kprogresshud.KProgressHUD
 import com.weiman.exam.examinationplatform.App
 import rx.Subscription
 import rx.subscriptions.CompositeSubscription
+import java.util.regex.Pattern
 
 /**
  * Created by jingbin on 2016/11/22.
@@ -67,7 +70,8 @@ object CommonUtils {
     }
 
     private var toast: Toast? = null
-    fun showToast(context: Context, title: String) {
+    fun showToast(context: Context, title: String?) {
+        if(isEmpty(title))return
         if (toast == null) {
             toast = Toast.makeText(context, title, Toast.LENGTH_SHORT)
             toast!!.setGravity(Gravity.CENTER, 0, 0)
@@ -147,7 +151,7 @@ object CommonUtils {
      * *
      * @return
      */
-    fun setTextValue(textView: TextView, value: String) {
+    fun setTextValue(textView: TextView, value: String?) {
         if (isNotEmpty(value))
             textView.text = value
         else {
@@ -208,7 +212,49 @@ object CommonUtils {
         }
         getContext().startActivity(intent)
     }
+    /**
+     * 自定义dialog全屏展示
+     *
+     * @param activity
+     * @param dialog
+     */
+    fun FullScreen(activity: Activity, dialog: Dialog, scale: Double) {
+        val m = activity.windowManager
+        val d = m.defaultDisplay  //为获取屏幕宽、高
+        val p = dialog.window!!.attributes  //获取对话框当前的参数值
+        //p.height = (int) (d.getHeight() * 0.3);   //高度设置为屏幕的0.3
+        p.width = (d.width * scale).toInt()    //宽度设置为全屏
+        dialog.window!!.attributes = p     //设置生效
+    }
 
+    /**
+     * 检测邮箱地址是否合法
+     * @param email
+     * *
+     * @return true合法 false不合法
+     */
+    fun isEmail(email: String?): Boolean {
+        if (null == email || "" == email) return false
+        val p = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*")//复杂匹配
+        val m = p.matcher(email)
+        return m.matches()
+    }
 
+    /**
+     * 判断是否是手机号码
+
+     * @param phoneNumber
+     * *
+     * @return
+     */
+    fun isMobile(phoneNumber: String): Boolean {
+        if (CommonUtils.isEmpty(phoneNumber)) {
+            return false
+        }
+        if (!phoneNumber.matches("1[0-9]{10}".toRegex())) {
+            return false
+        }
+        return true
+    }
 }
 

@@ -1,14 +1,11 @@
 package com.weiman.exam.examinationplatform.base.baseadapter
 
+
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-
-import butterknife.ButterKnife
-import com.weiman.exam.examinationplatform.utils.AutoUtils
 
 /**
  * Created by jingbin on 2016/11/25
@@ -18,10 +15,8 @@ abstract class BaseRecyclerViewHolder<D : ViewDataBinding>(viewGroup: ViewGroup,
     var binding: D
 
     init {
-        AutoUtils.autoView(this.itemView)
         // 得到这个View绑定的Binding
         binding = DataBindingUtil.getBinding<D>(this.itemView)
-        ButterKnife.bind(this, this.itemView)
     }// 注意要依附 viewGroup，不然显示item不全!!
 
     /**

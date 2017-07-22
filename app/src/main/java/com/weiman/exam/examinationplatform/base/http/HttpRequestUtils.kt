@@ -76,8 +76,11 @@ class HttpRequestUtils private constructor() : HttpBuilder {
                                         listener?.onSuccess(requestId, baseResponse.data)
                                     } else
                                         listener?.onException(requestId, 999)
-                                } else
+                                } else{
                                     listener?.onException(requestId, 0)
+                                    CommonUtils.showToast(CommonUtils.getContext(),baseResponse.msg)
+                                }
+
                             }
                             CommonUtils.hideInfoProgressDialog()
                         },
