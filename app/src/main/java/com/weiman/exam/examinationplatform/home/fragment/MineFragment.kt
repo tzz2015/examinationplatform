@@ -21,8 +21,12 @@ class MineFragment : BaseFragment<MineFragmentPresenter,FragmentMineBinding>(), 
     override fun initView() {
         showTitleBar()
         setTitle("我的")
-        mBindingView.model= UserInfoBean.getInstance()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mBindingView.model= UserInfoBean.getInstance()
     }
 
     override fun initPresenter() {

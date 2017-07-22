@@ -23,7 +23,7 @@ class HomeFragment : BaseFragment<HomeFragmentPresenter,LayoutTestBinding>(), Ho
         showTitleBar()
         setTitle("首页")
         mBindingView.tvShow.text = "首页"
-        //mPresenter?.getData()
+        mPresenter?.getData()
     }
 
 

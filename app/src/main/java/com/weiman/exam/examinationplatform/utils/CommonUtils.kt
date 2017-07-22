@@ -2,6 +2,7 @@ package com.weiman.exam.examinationplatform.utils
 
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE
+import android.content.Intent
 import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.view.Gravity
@@ -193,6 +194,19 @@ object CommonUtils {
         val s1 = s.substring(0, s.length - 1)
         val result = s1 + "}"
         return result
+    }
+
+    fun startActivity(t: Class<*>, map: Map<String, String>?) {
+        val intent = Intent(getContext(), t)
+
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+        if (map != null) {
+            for (key in map.keys) {
+                intent.putExtra(key, map[key])
+            }
+        }
+        getContext().startActivity(intent)
     }
 
 

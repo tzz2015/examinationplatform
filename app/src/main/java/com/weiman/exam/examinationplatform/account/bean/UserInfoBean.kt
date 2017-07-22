@@ -62,7 +62,6 @@ class UserInfoBean private constructor() {
     }
 
     fun getUserToken(): String {
-        LogUtil.getInstance().e(SharedPreUtil.getString(context, getUserId().toString() + "token", ""))
         return SharedPreUtil.getString(context, getUserId().toString() + "token", "")
     }
 

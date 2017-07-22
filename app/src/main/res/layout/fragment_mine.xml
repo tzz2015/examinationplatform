@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
    <data>
        <variable
            name="view"
@@ -47,15 +47,16 @@
                 android:layout_height="60px" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/rl_head"
             android:visibility="@{model.getUserToken().length()>0?view.VISIBLE:view.GONE}"
             android:background="@color/colorWhite"
             android:padding="27px"
             android:layout_width="match_parent"
             android:layout_height="160px">
             <ImageView
+                app:cUrl="@{model.getUserImg()}"
                 android:id="@+id/iv_head"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/defaut_touxiang"
                 android:layout_width="100px"
                 android:layout_height="100px" />
             <TextView

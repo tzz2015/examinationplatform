@@ -14,7 +14,7 @@ import com.weiman.exam.examinationplatform.home.contact.HomeFragmentContact
  */
 class HomeFragmentPresenter : HomeFragmentContact.Presenter(), HttpTaskListener {
     override fun getData() {
-        var loginInputBean = LoginInputBean("13743291@qq.com","123456", "android")
+        var loginInputBean = LoginInputBean("1374329135@qq.com","123456", "android")
         HttpRequestUtils.getInstance()
                 .setContext(mContext)
                 .setRequestId(10)
