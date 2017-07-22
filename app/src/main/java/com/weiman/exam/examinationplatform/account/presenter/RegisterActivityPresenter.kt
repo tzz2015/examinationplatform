@@ -37,7 +37,7 @@ class RegisterActivityPresenter : RegistActivityContact.Presenter(), HttpTaskLis
         }
         SharedPreUtil.saveString(mContext,"lAccount",account)
         SharedPreUtil.saveString(mContext,"lPsw",psw)
-        var inputBean = LoginInputBean(account, psw, "", userName)
+        var inputBean = LoginInputBean(account, psw, "", userName,1)
          HttpRequestUtils.getInstance()
                  .setContext(mContext)
                  .setCallBack(this)
