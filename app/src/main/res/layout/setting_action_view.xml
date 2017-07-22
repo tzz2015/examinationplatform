@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:paddingLeft="27px"
+    android:paddingRight="27px"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/iv_icon"
+        android:background="@mipmap/account_practice_icon"
+        android:layout_width="40px"
+        android:layout_height="40px" />
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="27px"
+        android:layout_toRightOf="@id/iv_icon"
+        android:text="今日推荐次数"
+        android:textSize="30px"
+        android:textColor="@color/color333333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+       android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/iv_arrow_right"
+        android:src="@mipmap/rigth_arrow"
+        android:scaleType="fitXY"
+        android:layout_width="30px"
+        android:layout_height="30px" />
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_alignParentBottom="true"
+        android:background="@color/public_line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1.2px"/>
+
+
+</RelativeLayout>

@@ -42,11 +42,13 @@
                 android:id="@+id/bt_login"
                 android:layout_marginTop="30px"
                 android:layout_below="@+id/tv_no_login"
-                android:background="@drawable/cyan_small_corner"
+                android:background="@drawable/btn_blue_press"
                 android:layout_width="300px"
                 android:layout_height="60px" />
         </RelativeLayout>
         <RelativeLayout
+            android:layout_marginBottom="20px"
+            android:layout_marginTop="20px"
             android:id="@+id/rl_head"
             android:visibility="@{model.getUserToken().length()>0?view.VISIBLE:view.GONE}"
             android:background="@color/colorWhite"
@@ -81,6 +83,17 @@
                 android:layout_width="30px"
                 android:layout_height="30px" />
         </RelativeLayout>
+        <com.weiman.exam.examinationplatform.view.SettingActionView
+            android:layout_width="match_parent"
+            app:title_name="我的考试"
+            app:icon_src="@mipmap/account_practice_icon"
+            android:layout_height="80px"/>
+        <com.weiman.exam.examinationplatform.view.SettingActionView
+            android:layout_width="match_parent"
+            app:title_name="我的收藏"
+            app:is_show_line="false"
+            app:icon_src="@mipmap/account_practice_icon"
+            android:layout_height="80px"/>
     </LinearLayout>
 </layout>
 
