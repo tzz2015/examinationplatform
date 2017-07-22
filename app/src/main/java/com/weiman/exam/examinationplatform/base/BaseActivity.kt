@@ -43,7 +43,6 @@ abstract class BaseActivity<T : BasePresenter<*>, SV : ViewDataBinding> : Fragme
         mPresenter?.mContext = this
         mHttpTask= HttpUtils.getInstance().createRequest(HttpTask::class.java)
         mPresenter?.mHttpTask=mHttpTask
-
     }
 
 

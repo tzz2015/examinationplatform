@@ -16,7 +16,12 @@ interface HttpTask {
     /**
      * 登录
      */
-
     @POST("auth/login")
     fun requestLogin(@Body loginInputBean: LoginInputBean): Observable<BaseResponse<UserInfoBean>>
+    /**
+     * 注册
+     */
+    @POST("auth/register")
+    fun requestRegister(@Body loginInputBean: LoginInputBean): Observable<BaseResponse<Any>>
+
 }

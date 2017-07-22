@@ -26,7 +26,8 @@
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
-        <activity android:name=".account.activity.LoginActivity"></activity>
+        <activity android:name=".account.activity.LoginActivity" />
+        <activity android:name=".account.activity.RegisterActivity"></activity>
     </application>
 
 </manifest>

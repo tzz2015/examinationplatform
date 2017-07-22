@@ -2,6 +2,7 @@ package com.weiman.exam.examinationplatform.home.fragment
 
 import com.weiman.exam.examinationplatform.R
 import com.weiman.exam.examinationplatform.account.activity.LoginActivity
+import com.weiman.exam.examinationplatform.account.activity.RegisterActivity
 import com.weiman.exam.examinationplatform.account.bean.UserInfoBean
 import com.weiman.exam.examinationplatform.base.BaseFragment
 import com.weiman.exam.examinationplatform.databinding.FragmentMineBinding
@@ -30,6 +31,7 @@ class MineFragment : BaseFragment<MineFragmentPresenter,FragmentMineBinding>(), 
     override fun initListener() {
         super.initListener()
         mBindingView.btLogin.setOnClickListener { CommonUtils.startActivity(LoginActivity::class.java,null) }
+        mBindingView.btRegister.setOnClickListener { CommonUtils.startActivity(RegisterActivity::class.java,null) }
     }
 
     override fun onResume() {

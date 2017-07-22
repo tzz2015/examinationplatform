@@ -6,6 +6,7 @@ import com.weiman.exam.examinationplatform.account.presenter.LoginActivityPresen
 import com.weiman.exam.examinationplatform.base.BaseActivity
 import com.weiman.exam.examinationplatform.databinding.ActivityLoginBinding
 import com.weiman.exam.examinationplatform.home.contact.LoginActivityContact
+import com.weiman.exam.examinationplatform.utils.CommonUtils
 import com.weiman.exam.examinationplatform.utils.SharedPreUtil
 
 class LoginActivity : BaseActivity<LoginActivityPresenter, ActivityLoginBinding>(), LoginActivityContact.View {
@@ -22,6 +23,7 @@ class LoginActivity : BaseActivity<LoginActivityPresenter, ActivityLoginBinding>
     override fun initView() {
         setTitle("登录微迈考试平台")
         mBindingView.etAccount.setText(SharedPreUtil.getString(mContext, "lAccount", ""))
+        mBindingView.etAccount.setSelection(mBindingView.etAccount.text.length)
         mBindingView.etPsw.setText(SharedPreUtil.getString(mContext, "lPsw", ""))
     }
 
@@ -34,5 +36,6 @@ class LoginActivity : BaseActivity<LoginActivityPresenter, ActivityLoginBinding>
         mBindingView.btLogin.setOnClickListener {
             mPresenter?.doLogin(mBindingView.etAccount.text.toString(), mBindingView.etPsw.text.toString())
         }
+        mBindingView.tvRegist.setOnClickListener { CommonUtils.startActivity(RegisterActivity::class.java,null) }
     }
 }
