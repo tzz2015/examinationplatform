@@ -1,10 +1,10 @@
 package com.weiman.exam.examinationplatform.base.http
 
+import com.weiman.exam.examinationplatform.account.bean.LoginInputBean
 import com.weiman.exam.examinationplatform.account.bean.UserInfoBean
-import retrofit2.http.GET
-import retrofit2.http.QueryMap
+import retrofit2.http.Body
+import retrofit2.http.POST
 import rx.Observable
-import java.util.*
 
 /**
 
@@ -16,6 +16,7 @@ interface HttpTask {
     /**
      * 登录
      */
-    @GET("user/loginsms")
-    fun requestLogin(@QueryMap pram: HashMap<String, Any>): Observable<BaseResponse<UserInfoBean>>
+
+    @POST("auth/login")
+    fun requestLogin(@Body loginInputBean: LoginInputBean): Observable<BaseResponse<UserInfoBean>>
 }

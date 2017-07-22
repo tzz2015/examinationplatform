@@ -71,7 +71,7 @@ class HttpRequestUtils private constructor() : HttpBuilder {
                         {
                             baseResponse ->
                             if (baseResponse is BaseResponse<*>) {
-                                if (baseResponse.success) {
+                                if (baseResponse.code==0) {
                                     if (baseResponse.data != null) {
                                         listener?.onSuccess(requestId, baseResponse.data)
                                     } else
@@ -79,11 +79,13 @@ class HttpRequestUtils private constructor() : HttpBuilder {
                                 } else
                                     listener?.onException(requestId, 0)
                             }
+                            CommonUtils.hideInfoProgressDialog()
                         },
                         {
                             t ->
                             LogUtil.getInstance().e(t.message.toString())
                             listener?.onException(requestId, 0)
+                            CommonUtils.hideInfoProgressDialog()
                         },
                         {
                             CommonUtils.hideInfoProgressDialog()

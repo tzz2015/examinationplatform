@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+   <data>
+       <variable
+           name="view"
+           type="android.view.View"/>
+       <variable
+           name="model"
+           type="com.weiman.exam.examinationplatform.account.bean.UserInfoBean"/>
+   </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:visibility="@{model.getUserToken().length()>0?view.GONE:view.VISIBLE}"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:padding="27px">
+
+            <TextView
+                android:id="@+id/tv_no_login"
+                style="@style/TextView289"
+                android:layout_centerHorizontal="true"
+                android:text="您还没有登录" />
+            <Button
+                android:textColor="@color/color606666"
+                android:text="注册"
+                android:textSize="28px"
+                android:id="@+id/bt_register"
+                android:layout_marginTop="30px"
+                android:layout_below="@+id/tv_no_login"
+                android:background="@drawable/white_small_corner"
+                android:layout_width="300px"
+                android:layout_height="60px" />
+            <Button
+                android:textColor="@color/colorWhite"
+                android:text="登录"
+                android:textSize="28px"
+                android:layout_alignParentRight="true"
+                android:id="@+id/bt_login"
+                android:layout_marginTop="30px"
+                android:layout_below="@+id/tv_no_login"
+                android:background="@drawable/cyan_small_corner"
+                android:layout_width="300px"
+                android:layout_height="60px" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="@{model.getUserToken().length()>0?view.VISIBLE:view.GONE}"
+            android:background="@color/colorWhite"
+            android:padding="27px"
+            android:layout_width="match_parent"
+            android:layout_height="160px">
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/defaut_touxiang"
+                android:layout_width="100px"
+                android:layout_height="100px" />
+            <TextView
+                android:layout_marginTop="15px"
+                android:id="@+id/tv_user_name"
+                android:layout_marginLeft="27px"
+                android:layout_toRightOf="@+id/iv_head"
+                android:text="@{model.getUserName()}"
+               style="@style/TextView283"/>
+            <TextView
+                android:layout_marginTop="10px"
+                android:layout_below="@+id/tv_user_name"
+                android:id="@+id/tv_account"
+                android:layout_marginLeft="27px"
+                android:layout_toRightOf="@+id/iv_head"
+                android:text="@{model.getUserEmil()}"
+                style="@style/TextView259"/>
+            <ImageView
+                android:src="@mipmap/rigth_arrow"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="30px"
+                android:layout_height="30px" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
+

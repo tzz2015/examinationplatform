@@ -10,8 +10,8 @@ import java.io.Serializable
 
 data class BaseResponse<T>(
         var data: T?=null,
-        var code: String,
+        var code: Int,
         var msg: String,
-        var success: Boolean = false
+        var time: Long
 ) : Serializable
 

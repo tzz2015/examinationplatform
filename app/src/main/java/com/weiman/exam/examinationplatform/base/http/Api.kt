@@ -10,6 +10,6 @@ object  Api {
     /**
      * 主机地址
      */
-    val HOST_URL = "http://www.ikuaibaike.com/interface/api/"
+    val HOST_URL = "http://192.168.1.101:8080/"
 
 }

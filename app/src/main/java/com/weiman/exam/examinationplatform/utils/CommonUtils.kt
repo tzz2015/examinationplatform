@@ -176,5 +176,25 @@ object CommonUtils {
 
     }
 
+    /**
+     * 传入map，转换成符合格式的url请求
+
+     * @param map
+     * *
+     * @return
+     */
+    fun map2String(map: Map<String, String>): String {
+        val sb = StringBuilder("{")
+        for ((key, value) in map) {
+            val s1 = "$key:'$value',"
+            sb.append(s1)
+        }
+        val s = sb.toString()
+        val s1 = s.substring(0, s.length - 1)
+        val result = s1 + "}"
+        return result
+    }
+
+
 }
 

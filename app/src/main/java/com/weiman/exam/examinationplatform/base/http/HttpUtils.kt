@@ -4,10 +4,14 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.FieldNamingStrategy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.weiman.exam.examinationplatform.account.bean.UserInfoBean
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import java.lang.reflect.Field
 import java.util.concurrent.TimeUnit
 
@@ -49,12 +53,12 @@ class HttpUtils private constructor(){
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .addInterceptor(LoggingInterceptor())//日志
                 //            .addInterceptor(new NotEdcodeLoggingInterceptor())//不加密
-                //   .addNetworkInterceptor(new RequestHeaderInterceptor())//请求头
+                .addNetworkInterceptor(RequestHeaderInterceptor())//请求头
                 .build()
         return client
     }
 
-    private fun getGson(): Gson? {
+    public fun getGson(): Gson? {
         if (gson == null) {
             synchronized(HttpUtils::class.java) {
                 if (gson == null) {
@@ -94,6 +98,18 @@ class HttpUtils private constructor(){
             }
         }
         return httpTask as T
+    }
+
+
+    inner class RequestHeaderInterceptor : Interceptor {
+        @Throws(IOException::class)
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val newRequest = chain.request().newBuilder()
+                    //  .addHeader("x-client-token",UserInfoModel.getInstance().getToken())
+                    .addHeader("x-client-token",UserInfoBean.getInstance().getUserToken())
+                    .build()
+            return chain.proceed(newRequest)
+        }
     }
 
 }

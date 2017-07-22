@@ -41,6 +41,5 @@
     <color name="search_bg">#fca63f</color>
     <!--红色-->
     <color name="public_red">#fa4c49</color>
-    <color name="color_bbbbbb">#bbbbbb</color>
-    <color name="color_99000000">#33000000</color>
+
 </resources>

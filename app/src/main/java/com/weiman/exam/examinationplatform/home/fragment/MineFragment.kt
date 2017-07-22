@@ -1,8 +1,9 @@
 package com.weiman.exam.examinationplatform.home.fragment
 
 import com.weiman.exam.examinationplatform.R
+import com.weiman.exam.examinationplatform.account.bean.UserInfoBean
 import com.weiman.exam.examinationplatform.base.BaseFragment
-import com.weiman.exam.examinationplatform.databinding.LayoutTestBinding
+import com.weiman.exam.examinationplatform.databinding.FragmentMineBinding
 import com.weiman.exam.examinationplatform.home.contact.MineFragmentContact
 import com.weiman.exam.examinationplatform.home.presenter.MineFragmentPresenter
 
@@ -12,15 +13,16 @@ import com.weiman.exam.examinationplatform.home.presenter.MineFragmentPresenter
  * 微迈科技有限责任公司
  * 描述
  */
-class MineFragment : BaseFragment<MineFragmentPresenter,LayoutTestBinding>(), MineFragmentContact.View {
+class MineFragment : BaseFragment<MineFragmentPresenter,FragmentMineBinding>(), MineFragmentContact.View {
     override fun setLayoutId(): Int {
-        return R.layout.layout_test
+        return R.layout.fragment_mine
     }
 
     override fun initView() {
         showTitleBar()
         setTitle("我的")
-        mBindingView.tvShow.text="我的"
+        mBindingView.model= UserInfoBean.getInstance()
+
     }
 
     override fun initPresenter() {
