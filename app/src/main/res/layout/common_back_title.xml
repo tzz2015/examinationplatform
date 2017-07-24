@@ -13,8 +13,8 @@
         <ImageView
 
             android:id="@+id/iv_icon_back"
-            android:layout_width="43px"
-            android:layout_height="43px"
+            android:layout_width="40px"
+            android:layout_height="40px"
             android:layout_gravity="center"
             android:layout_marginLeft="27px"
             android:layout_marginRight="27px"

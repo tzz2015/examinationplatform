@@ -26,8 +26,27 @@
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
-        <activity android:name=".account.activity.LoginActivity" />
-        <activity android:name=".account.activity.RegisterActivity"></activity>
+        <!-- 登录 -->
+        <activity android:name=".account.activity.LoginActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+        <!-- 注册 -->
+        <activity android:name=".account.activity.RegisterActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+        <!-- 设置 -->
+        <activity android:name=".mine.activity.SettingActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+        <!-- 拍照 -->
+        <activity android:name=".view.photo.CameraActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"
+            android:theme="@android:style/Theme.Translucent" />
     </application>
 
 </manifest>

@@ -10,10 +10,14 @@ import android.net.ConnectivityManager
 import android.view.Gravity
 import android.widget.TextView
 import android.widget.Toast
+import com.jph.takephoto.model.TImage
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.weiman.exam.examinationplatform.App
+import com.weiman.exam.examinationplatform.view.photo.CameraActivity
+import com.weiman.exam.examinationplatform.view.photo.PhotoModel
 import rx.Subscription
 import rx.subscriptions.CompositeSubscription
+import java.io.File
 import java.util.regex.Pattern
 
 /**
@@ -255,6 +259,73 @@ object CommonUtils {
             return false
         }
         return true
+    }
+
+    /**
+     * 获取客户端版本
+
+     * @return 客户端版本
+     */
+    fun getVersion(): String {
+        var version = ""
+        try {
+            // 获取PackageManager的实例
+            val packageManager = getContext()
+                    .packageManager
+            // getPackageName()是你当前类的包名，0代表是获取版本信息
+            val packInfo = packageManager.getPackageInfo(
+                    getContext().packageName, 0)
+            version = packInfo.versionName
+        } catch (ex: Exception) {
+        }
+
+        return version
+    }
+
+    /**
+     * 删除文件夹
+     * @param path
+     */
+    fun deleteFileFolder(path: String) {
+        val dir = File(path)
+        if (dir == null || !dir.exists() || !dir.isDirectory)
+            return
+
+        for (file in dir.listFiles()!!) {
+            if (file.isFile)
+                file.delete() // 删除所有文件
+            else if (file.isDirectory)
+                deleteFileFolder(file.path) // 递规的方式删除文件夹
+        }
+        dir.delete()// 删除目录本身
+    }
+
+    /**
+     * 去除照片缓存
+     */
+    fun clearPhotoCache(context: Context) {
+        CommonUtils.deleteFileFolder(CameraActivity.tempFile1)
+        CommonUtils.deleteFileFolder(CameraActivity.tempFile2)
+        CommonUtils.deleteFileFolder(context.cacheDir.path)
+    }
+
+    /**
+     * 选择单张图片
+     */
+    fun seleteSinglePhoto(isCrop: Boolean, lisener: SelectPhotoListener) {
+        val photoModel = PhotoModel(getContext())
+        photoModel.isCrop = isCrop
+        photoModel.setCallback(object : PhotoModel.OnHanlderResultCallback {
+            override fun onHanlderSuccess(resultList: MutableList<TImage>) {
+                lisener.onSuccessBack(resultList)
+            }
+
+        })
+        photoModel.initTakePhoto()
+    }
+
+    interface SelectPhotoListener {
+        fun onSuccessBack(resultList: List<TImage>)
     }
 }
 

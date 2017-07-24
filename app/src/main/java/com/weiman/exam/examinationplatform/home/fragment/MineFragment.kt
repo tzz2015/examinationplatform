@@ -8,6 +8,7 @@ import com.weiman.exam.examinationplatform.base.BaseFragment
 import com.weiman.exam.examinationplatform.databinding.FragmentMineBinding
 import com.weiman.exam.examinationplatform.home.contact.MineFragmentContact
 import com.weiman.exam.examinationplatform.home.presenter.MineFragmentPresenter
+import com.weiman.exam.examinationplatform.mine.activity.SettingActivity
 import com.weiman.exam.examinationplatform.mine.activity.UserInfoActivity
 import com.weiman.exam.examinationplatform.utils.CommonUtils
 
@@ -32,6 +33,7 @@ class MineFragment : BaseFragment<MineFragmentPresenter,FragmentMineBinding>(), 
         super.initListener()
         mBindingView.btLogin.setOnClickListener { CommonUtils.startActivity(LoginActivity::class.java,null) }
         mBindingView.btRegister.setOnClickListener { CommonUtils.startActivity(RegisterActivity::class.java,null) }
+       mBindingView.svSetting.setOnClickListener {  CommonUtils.startActivity(SettingActivity::class.java,null)  }
     }
 
     override fun onResume() {

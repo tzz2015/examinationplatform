@@ -19,7 +19,7 @@ import com.weiman.exam.examinationplatform.utils.CommonUtils
  * 描述：
  */
 
-class ConfirmDialog(private val mContext: Context, private val dialoglisener: ConfirmDialog.SingleDialoglisener?, vararg arg: String) : Dialog(mContext, R.style.bottom_select_dialog) {
+class ConfirmDialog(private val mContext: Context, private val dialogListener: ConfirmDialog.SingleDialogListener?, vararg arg: String) : Dialog(mContext, R.style.bottom_select_dialog) {
 
     internal var tvShow: TextView? = null
     internal var btSubmit: Button? = null
@@ -73,7 +73,7 @@ class ConfirmDialog(private val mContext: Context, private val dialoglisener: Co
         }
 
         btSubmit?.setOnClickListener {
-            dialoglisener?.onConfirm("")
+            dialogListener?.onConfirm("")
             dismiss()
         }
         tvBtCancel?.setOnClickListener { dismiss() }
@@ -82,7 +82,7 @@ class ConfirmDialog(private val mContext: Context, private val dialoglisener: Co
 
 
 
-    interface SingleDialoglisener {
+    interface SingleDialogListener {
         fun onConfirm(s: String)
     }
 }

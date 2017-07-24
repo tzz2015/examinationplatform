@@ -42,4 +42,9 @@
     <!--红色-->
     <color name="public_red">#fa4c49</color>
 
+
+    <!--相册状态栏-->
+    <color name="multiple_image_select_primaryDark">#6f98f7</color>
+    <color name="multiple_image_select_accent">#6f98f7</color>
+    <color name="multiple_image_select_primary">#6f98f7</color>
 </resources>

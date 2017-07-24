@@ -10,6 +10,7 @@ object  Api {
     /**
      * 主机地址
      */
-    val HOST_URL = "http://dev.link-nemo.com/platform/"
+   // val HOST_URL = "http://dev.link-nemo.com/platform/"
+    val HOST_URL = "http://192.168.1.102:8080/"
 
 }

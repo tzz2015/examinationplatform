@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.weiman.exam.examinationplatform.mine.activity.SettingActivity">
+      <com.weiman.exam.examinationplatform.view.SettingView
+       android:id="@+id/sv_share"
+          android:layout_width="match_parent"
+          app:setting_title="分享给好友"
+          android:layout_marginTop="20px"
+          android:layout_height="80px"/>
+        <com.weiman.exam.examinationplatform.view.SettingView
+          android:id="@+id/sv_suggest"
+            android:layout_width="match_parent"
+            app:setting_title="意见反馈"
+            android:layout_height="80px"/>
+
+        <com.weiman.exam.examinationplatform.view.SettingView
+          android:id="@+id/sv_cache"
+            android:layout_width="match_parent"
+            app:setting_title="清除缓存"
+            android:layout_marginTop="20px"
+            android:layout_height="80px"/>
+        <com.weiman.exam.examinationplatform.view.SettingView
+          android:id="@+id/sv_update"
+            android:layout_width="match_parent"
+            app:setting_title="检查更新"
+            android:layout_height="80px"/>
+        <com.weiman.exam.examinationplatform.view.SettingView
+           android:id="@+id/sv_about"
+            android:layout_width="match_parent"
+            app:setting_title="关于我们"
+            android:layout_height="80px"/>
+    </LinearLayout>
+</layout>
+

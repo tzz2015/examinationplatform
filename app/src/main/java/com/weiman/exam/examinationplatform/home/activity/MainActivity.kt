@@ -12,6 +12,7 @@ import com.weiman.exam.examinationplatform.home.fragment.HomeFragment
 import com.weiman.exam.examinationplatform.home.fragment.MineFragment
 import com.weiman.exam.examinationplatform.home.presenter.MainHomeActivityPresenter
 import com.weiman.exam.examinationplatform.utils.AutoUtils
+import com.weiman.exam.examinationplatform.utils.CommonUtils
 import com.weiman.exam.examinationplatform.view.navigationView.NavigationView
 import java.util.*
 
@@ -80,5 +81,8 @@ class MainActivity : BaseActivity<MainHomeActivityPresenter, ActivityMainBinding
         }
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        CommonUtils.clearPhotoCache(mContext)
+    }
 }
