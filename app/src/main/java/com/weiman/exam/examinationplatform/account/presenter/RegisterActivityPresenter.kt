@@ -15,10 +15,11 @@ import com.weiman.exam.examinationplatform.utils.SharedPreUtil
  */
 class RegisterActivityPresenter : RegistActivityContact.Presenter(), HttpTaskListener {
 
+
     /**
      * 登录
      */
-    override fun doRegsiter(account: String, psw: String,checkPsw:String,userName:String) {
+    override fun doRegsiter(account: String, psw: String, checkPsw: String, userName: String) {
         if (CommonUtils.isEmpty(psw) || CommonUtils.isNotEmpty(psw) && psw.length < 6) {
             CommonUtils.showToast(mContext, "请输入大于六位数的密码")
             return
@@ -27,48 +28,42 @@ class RegisterActivityPresenter : RegistActivityContact.Presenter(), HttpTaskLis
             CommonUtils.showToast(mContext, "请输入手机号码或者邮箱")
             return
         }
-        if(psw!=(checkPsw)){
+        if (psw != (checkPsw)) {
             CommonUtils.showToast(mContext, "两次密码不一致")
             return
         }
-        if(CommonUtils.isEmpty(userName)){
+        if (CommonUtils.isEmpty(userName)) {
             CommonUtils.showToast(mContext, "用户名不能为空")
             return
         }
-        SharedPreUtil.saveString(mContext,"lAccount",account)
-        SharedPreUtil.saveString(mContext,"lPsw",psw)
-        var inputBean = LoginInputBean(account, psw, "", userName,1)
-         HttpRequestUtils.getInstance()
-                 .setContext(mContext)
-                 .setCallBack(this)
-                 .setRequestId(1)
-                 .setObservable(mHttpTask.requestRegister(inputBean))
-                 .create();
+        SharedPreUtil.saveString(mContext, "lAccount", account)
+        SharedPreUtil.saveString(mContext, "lPsw", psw)
+        var inputBean = LoginInputBean(account, psw, "", userName, 1)
+        HttpRequestUtils.getInstance()
+                .setContext(mContext)
+                .setCallBack(this)
+                .setRequestId(1)
+                .setObservable(mHttpTask.requestRegister(inputBean))
+                .create()
 
     }
 
 
     override fun onSuccess(requestId: Int, t: Any?) {
-        when (requestId) {
-            1 -> {
-
-            }
-
-
-        }
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onException(requestId: Int, code: Int) {
-       when(code){
-           999->{
-               CommonUtils.showToast(mContext,"注册成功")
-               var presenter = LoginActivityPresenter()
-               presenter.mContext=mContext;
-               presenter.mHttpTask=mHttpTask
-               presenter.doLogin( SharedPreUtil.getString(mContext,"lAccount",""),SharedPreUtil.getString(mContext,"lPsw",""))
+        when (code) {
+            999 -> {
+                CommonUtils.showToast(mContext, "注册成功")
+                var presenter = LoginActivityPresenter()
+                presenter.mContext = mContext;
+                presenter.mHttpTask = mHttpTask
+                presenter.doLogin(SharedPreUtil.getString(mContext, "lAccount", ""), SharedPreUtil.getString(mContext, "lPsw", ""))
 
-           }
-       }
+            }
+        }
     }
 
 
