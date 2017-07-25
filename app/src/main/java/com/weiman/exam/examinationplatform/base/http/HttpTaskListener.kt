@@ -7,6 +7,13 @@ package com.weiman.exam.examinationplatform.base.http
  * 描述
  */
 interface HttpTaskListener {
-    abstract fun onSuccess(requestId: Int, t: Any?)
-    abstract fun onException(requestId: Int, code:Int)
+    /**
+     * 请求成功
+     */
+     fun onSuccess(requestId: Int, t: Any?)
+
+    /**
+     * 请求失败
+     */
+     fun onException(requestId: Int, code:Int)
 }

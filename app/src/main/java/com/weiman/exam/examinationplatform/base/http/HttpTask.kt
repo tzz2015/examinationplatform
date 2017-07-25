@@ -18,10 +18,23 @@ interface HttpTask {
      */
     @POST("auth/login")
     fun requestLogin(@Body loginInputBean: LoginInputBean): Observable<BaseResponse<UserInfoBean>>
+
     /**
      * 注册
      */
     @POST("auth/register")
     fun requestRegister(@Body loginInputBean: LoginInputBean): Observable<BaseResponse<Any>>
+
+    /**
+     * 发送重置密码的验证码的邮件
+     */
+    @POST("auth/reset/send")
+    fun requestCode(@Body loginInputBean: LoginInputBean): Observable<BaseResponse<Any>>
+
+    /**
+     * 重置密码
+     */
+    @POST("auth/reset/password")
+    fun postResetPsw(@Body loginInputBean: LoginInputBean): Observable<BaseResponse<Any>>
 
 }

@@ -27,26 +27,42 @@
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
         <!-- 登录 -->
-        <activity android:name=".account.activity.LoginActivity"
+        <activity
+            android:name=".account.activity.LoginActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="nosensor"
-            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
         <!-- 注册 -->
-        <activity android:name=".account.activity.RegisterActivity"
+        <activity
+            android:name=".account.activity.RegisterActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="nosensor"
-            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
         <!-- 设置 -->
-        <activity android:name=".mine.activity.SettingActivity"
+        <activity
+            android:name=".mine.activity.SettingActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="nosensor"
-            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
         <!-- 拍照 -->
-        <activity android:name=".view.photo.CameraActivity"
+        <activity
+            android:name=".view.photo.CameraActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="nosensor"
-            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"
-            android:theme="@android:style/Theme.Translucent" />
+            android:theme="@android:style/Theme.Translucent"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
+        <!-- 获取邮箱验证码 -->
+        <activity android:name=".account.activity.GetCodeActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="nosensor"
+            android:theme="@android:style/Theme.Translucent"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
+        <!-- 重置密码 -->
+        <activity android:name=".account.activity.ResetPswActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="nosensor"
+            android:theme="@android:style/Theme.Translucent"
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden"/>
     </application>
 
 </manifest>

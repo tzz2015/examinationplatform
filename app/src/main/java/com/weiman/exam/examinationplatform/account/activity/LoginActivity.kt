@@ -7,6 +7,7 @@ import com.weiman.exam.examinationplatform.base.BaseActivity
 import com.weiman.exam.examinationplatform.databinding.ActivityLoginBinding
 import com.weiman.exam.examinationplatform.home.contact.LoginActivityContact
 import com.weiman.exam.examinationplatform.utils.CommonUtils
+import com.weiman.exam.examinationplatform.utils.Constants
 import com.weiman.exam.examinationplatform.utils.SharedPreUtil
 
 class LoginActivity : BaseActivity<LoginActivityPresenter, ActivityLoginBinding>(), LoginActivityContact.View {
@@ -22,9 +23,9 @@ class LoginActivity : BaseActivity<LoginActivityPresenter, ActivityLoginBinding>
      */
     override fun initView() {
         setTitle("登录微迈考试平台")
-        mBindingView.etAccount.setText(SharedPreUtil.getString(mContext, "lAccount", ""))
+        mBindingView.etAccount.setText(SharedPreUtil.getString(mContext, Constants.LACCOUNT, ""))
         mBindingView.etAccount.setSelection(mBindingView.etAccount.text.length)
-        mBindingView.etPsw.setText(SharedPreUtil.getString(mContext, "lPsw", ""))
+        mBindingView.etPsw.setText(SharedPreUtil.getString(mContext, Constants.LPSW, ""))
     }
 
     override fun initPresenter() {
@@ -37,5 +38,6 @@ class LoginActivity : BaseActivity<LoginActivityPresenter, ActivityLoginBinding>
             mPresenter?.doLogin(mBindingView.etAccount.text.toString(), mBindingView.etPsw.text.toString())
         }
         mBindingView.tvRegist.setOnClickListener { CommonUtils.startActivity(RegisterActivity::class.java,null) }
+       mBindingView.tvForget.setOnClickListener { CommonUtils.startActivity(GetCodeActivity::class.java,null) }
     }
 }

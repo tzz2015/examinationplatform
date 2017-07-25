@@ -5,6 +5,7 @@ import com.weiman.exam.examinationplatform.base.http.HttpRequestUtils
 import com.weiman.exam.examinationplatform.base.http.HttpTaskListener
 import com.weiman.exam.examinationplatform.home.contact.RegistActivityContact
 import com.weiman.exam.examinationplatform.utils.CommonUtils
+import com.weiman.exam.examinationplatform.utils.Constants
 import com.weiman.exam.examinationplatform.utils.SharedPreUtil
 
 /**
@@ -36,8 +37,8 @@ class RegisterActivityPresenter : RegistActivityContact.Presenter(), HttpTaskLis
             CommonUtils.showToast(mContext, "用户名不能为空")
             return
         }
-        SharedPreUtil.saveString(mContext, "lAccount", account)
-        SharedPreUtil.saveString(mContext, "lPsw", psw)
+        SharedPreUtil.saveString(mContext, Constants.LACCOUNT, account)
+        SharedPreUtil.saveString(mContext, Constants.LPSW, psw)
         var inputBean = LoginInputBean(account, psw, "", userName, 1)
         HttpRequestUtils.getInstance()
                 .setContext(mContext)
@@ -60,7 +61,7 @@ class RegisterActivityPresenter : RegistActivityContact.Presenter(), HttpTaskLis
                 var presenter = LoginActivityPresenter()
                 presenter.mContext = mContext;
                 presenter.mHttpTask = mHttpTask
-                presenter.doLogin(SharedPreUtil.getString(mContext, "lAccount", ""), SharedPreUtil.getString(mContext, "lPsw", ""))
+                presenter.doLogin(SharedPreUtil.getString(mContext,Constants.LACCOUNT, ""), SharedPreUtil.getString(mContext,Constants.LPSW, ""))
 
             }
         }

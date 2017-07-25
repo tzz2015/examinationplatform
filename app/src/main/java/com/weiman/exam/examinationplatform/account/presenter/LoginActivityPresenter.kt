@@ -7,6 +7,7 @@ import com.weiman.exam.examinationplatform.base.http.HttpRequestUtils
 import com.weiman.exam.examinationplatform.base.http.HttpTaskListener
 import com.weiman.exam.examinationplatform.home.contact.LoginActivityContact
 import com.weiman.exam.examinationplatform.utils.CommonUtils
+import com.weiman.exam.examinationplatform.utils.Constants
 import com.weiman.exam.examinationplatform.utils.SharedPreUtil
 
 /**
@@ -29,8 +30,8 @@ class LoginActivityPresenter : LoginActivityContact.Presenter(), HttpTaskListene
             CommonUtils.showToast(mContext, "请输入手机号码或者邮箱")
             return
         }
-        SharedPreUtil.saveString(mContext,"lAccount",account)
-        SharedPreUtil.saveString(mContext,"lPsw",psw)
+        SharedPreUtil.saveString(mContext,Constants.LACCOUNT,account)
+        SharedPreUtil.saveString(mContext,Constants.LPSW,psw)
         var loginInputBean = LoginInputBean(account, psw, "android")
         HttpRequestUtils.getInstance()
                 .setContext(mContext)

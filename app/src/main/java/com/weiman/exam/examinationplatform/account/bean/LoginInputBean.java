@@ -20,6 +20,11 @@ public class LoginInputBean {
         this.password = password;
         this.osType = osType;
     }
+    public LoginInputBean(String email, String password, String code,boolean b) {
+        this.email = email;
+        this.password = password;
+        this.code = code;
+    }
 
     public LoginInputBean(String email, String password, String code, String name,int type) {
         this.email = email;
@@ -28,4 +33,10 @@ public class LoginInputBean {
         this.name = name;
         this.type=type;
     }
+
+    public LoginInputBean(String email, String code) {
+        this.email = email;
+        this.code = code;
+    }
+
 }
